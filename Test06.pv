@@ -1,0 +1,21 @@
+size(2500, 1000)
+background(1)
+
+import json
+
+with open('crappydesign_scraped04.json') as infile:
+    upsData = json.load(infile)
+print len(upsData)
+print upsData[0]
+
+y = 20
+# Only limit on the first 20
+for ups in upsData[:30]:
+		# draw each line 22 pixels lower
+    y = y + 22
+    # calculate the width of the bar sensibly (1150 / 3 for the widest bar)
+    barwidth = ups['ups'] / 0.05
+    rect(1550, y - 22, barwidth, 15)
+    text(ups['title'], 30, y)
+    fill(0, 0, 0.8)
+# 	fill(0, 0.8, 0)
